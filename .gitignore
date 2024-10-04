@@ -1,3 +1,5 @@
 .DS_Store
 utils/files/english.txt
 utils/files/portuguese.txt
+utils/__pycache__/
+tokenizers/__pycache__/

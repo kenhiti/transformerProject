@@ -1,10 +1,8 @@
 import random
 import time
-import tensorflow as tf
-from tensorflow.python.keras import layers
 import tensorflow_datasets as tfds
 from tensorflow_datasets.core.deprecated.text import SubwordTextEncoder
-from transformerProject.utils.inspect_utils import get_variable_name
+from transformer_architecture.utils.inspect_utils import get_variable_name
 
 def tokenize(str_list: list[str]):
     start = time.perf_counter()

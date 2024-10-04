@@ -1,5 +1,3 @@
-
-
 def remove_long_sentences(input_list, output_list, max_length):
     idx_to_remove_inputs = [count for count, sent in enumerate(input_list) if len(sent) > max_length]
     __iterator_for_delete__(idx_to_remove_inputs, input_list, output_list)
