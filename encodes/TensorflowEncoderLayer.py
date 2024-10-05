@@ -1,4 +1,3 @@
-import tensorflow as tf
 from keras import layers as layers
 
 from transformer_architecture.attention.TensorflowMultiHeadAttention import TensorflowMultiHeadAttention

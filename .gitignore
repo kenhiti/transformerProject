@@ -3,3 +3,9 @@ utils/files/english.txt
 utils/files/portuguese.txt
 utils/__pycache__/
 tokenizers/__pycache__/
+__pycache__/
+attention/__pycache__/
+batchs/__pycache__/
+decodes/__pycache__/
+encodes/__pycache__/
+paddings/__pycache__/

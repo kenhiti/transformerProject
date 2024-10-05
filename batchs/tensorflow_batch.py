@@ -1,4 +1,5 @@
 import logging
+
 import tensorflow as tf
 
 batch_size = 64

@@ -1,9 +1,5 @@
-import tensorflow as tf
 from keras import layers as layers
-
-from transformer_architecture.TransformerArchitecture import outputs
 from transformer_architecture.attention.TensorflowMultiHeadAttention import TensorflowMultiHeadAttention
-
 
 class TensorflowDecoderLayer(layers.Layer):
     def __init__(self, FFN_units, nb_proj, dropout_rate):

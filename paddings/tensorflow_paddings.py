@@ -1,5 +1,7 @@
 import random
+
 from keras import preprocessing as pp
+
 
 def set_paddings(inputs, max_length):
     padded_list = pp.sequence.pad_sequences(inputs, value=0, padding='post', maxlen=max_length)

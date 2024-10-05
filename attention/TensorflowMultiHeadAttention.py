@@ -1,6 +1,8 @@
 import tensorflow as tf
 from keras import layers as layers
+
 from transformer_architecture.attention.tensorflow_attention_mechanism import scaled_dot_product_attention
+
 
 class TensorflowMultiHeadAttention(layers.Layer):
 
