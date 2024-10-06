@@ -33,12 +33,12 @@ def clean_data(*args: str) -> tuple[list[str], list[str]]:
         return data1, data2
 clean_data.__doc__ = "A function to prepare dataset. This one removes dots at the start of the phrases and double spaces. It's necessary because an algorithm can't interpret this as the ends of the sentence."
 
-def check_load_dataset(data1: str, data2: str, log_it: bool):
+def check_load_datafiles(data1: str, data2: str, log_it: bool):
     english_data = split_data(data1)
     portuguese_data = split_data(data2)
     print(f"Are these length datasets equal??? {compare_length(english_data, portuguese_data)}")
     print_data_to_check_it(english_data, portuguese_data, log_it =log_it)
-check_load_dataset.__doc__ = "A simple function to check whether a dataset was loaded correctly"
+check_load_datafiles.__doc__ = "A simple function to check whether a dataset was loaded correctly"
 
 def __remove__unwanted_characters__(data: str) -> list[str]:
     data = re.sub(r"\.(?=[0-9]|[a-z]|[A-Z])", "###", data)

@@ -2,6 +2,22 @@ import logging
 
 import tensorflow as tf
 
+'''
+https://www.tensorflow.org/guide/data_performance
+
+Best practice summary
+Here is a summary of the best practices for designing performant TensorFlow input pipelines:
+
+V - Use the prefetch transformation to overlap the work of a producer and consumer
+X - Parallelize the data reading transformation using the interleave transformation
+X - Parallelize the map transformation by setting the num_parallel_calls argument
+V - Use the cache transformation to cache data in memory during the first epoch
+X - Vectorize user-defined functions passed in to the map transformation
+V - Shuffle transformations
+
+IN PROGRESS
+'''
+
 batch_size = 64
 buffer_size = 20000
 

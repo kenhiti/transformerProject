@@ -1,6 +1,6 @@
 .DS_Store
-utils/files/english.txt
-utils/files/portuguese.txt
+utils/files/input/english.txt
+utils/files/input/portuguese.txt
 utils/__pycache__/
 tokenizers/__pycache__/
 __pycache__/
@@ -9,3 +9,4 @@ batchs/__pycache__/
 decodes/__pycache__/
 encodes/__pycache__/
 paddings/__pycache__/
+venv

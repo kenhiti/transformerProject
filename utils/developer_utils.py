@@ -1,8 +1,11 @@
 def remove_long_sentences(input_list, output_list, max_length):
     idx_to_remove_inputs = [count for count, sent in enumerate(input_list) if len(sent) > max_length]
+    print(f'Length of the remove sentences to inputs is:{len(idx_to_remove_inputs)}')
     __iterator_for_delete__(idx_to_remove_inputs, input_list, output_list)
     idx_to_remove_outputs = [count for count, sent in enumerate(output_list) if len(sent) > max_length]
+    print(f'Length of the remove sentences to outputs is:{len(idx_to_remove_outputs)}')
     __iterator_for_delete__(idx_to_remove_outputs, input_list, output_list)
+
 
 def __iterator_for_delete__(idx_to_remove, input_list, output_list):
     print(f'Input list length BEFORE to remove is:{len(input_list)} and output list length BEFORE to remove is: {len(output_list)}')

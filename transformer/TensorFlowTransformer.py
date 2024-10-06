@@ -33,11 +33,11 @@ class TensorFlowTransformer(model):
 
     def call(self, enc_inputs, dec_inputs, training):
         enc_mask = self.create_padding_mask(enc_inputs)
-        dec_mask_1 = tf.maximum(create_padding_mask(dec_inputs), create_look_ahead_mask(dec_inputs))
+        dec_mask_1 = tf.maximum(self.create_padding_mask(dec_inputs), self.create_look_ahead_mask(dec_inputs))
         dec_mask_2 = self.create_padding_mask(enc_inputs)
 
         enc_outputs = self.encoder(enc_inputs,enc_mask, training)
-        dec_outputs = self.decoder(dec_inputs,enc_outputs, dec_mask_1, dec_mask_2, training)
+        dec_outputs = self.decoder(dec_inputs, enc_outputs, dec_mask_1, dec_mask_2, training)
 
         return self.last_linear(dec_outputs)
 
