@@ -2,9 +2,9 @@ from keras import layers as layers
 from transformer_architecture.attention.TensorflowMultiHeadAttention import TensorflowMultiHeadAttention
 
 class TensorflowDecoderLayer(layers.Layer):
-    def __init__(self, FFN_units, nb_proj, dropout_rate):
+    def __init__(self, ffn_units, nb_proj, dropout_rate):
         super(TensorflowDecoderLayer, self).__init__()
-        self.FFN_units = FFN_units
+        self.FFN_units = ffn_units
         self.nb_proj = nb_proj
         self.dropout_rate = dropout_rate
 
@@ -20,7 +20,7 @@ class TensorflowDecoderLayer(layers.Layer):
         self.norm2 = layers.LayerNormalization(epsilon=1e-6)
 
         self.dense_1 = layers.Dense(units=self.FFN_units, activation='relu')
-        self.dense_2 = layers.Dense(units=self.FFN_units, activation='relu')
+        self.dense_2 = layers.Dense(units=self.d_model, activation='relu')
         self.dropout_3 = layers.Dropout(rate=self.dropout_rate)
 
         self.norm3 = layers.LayerNormalization(epsilon=1e-6)
@@ -38,3 +38,4 @@ class TensorflowDecoderLayer(layers.Layer):
         outputs = self.dense_2(outputs)
         outputs = self.dropout_3(outputs, training)
         outputs = self.norm3(outputs + attention_2)
+        return outputs

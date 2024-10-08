@@ -2,27 +2,27 @@ import tensorflow as tf
 from keras import Model as model
 from keras import layers as layers
 
-from transformer_architecture.decodes.TensorFlowDecoder import TensorFlowDecoder
-from transformer_architecture.encodes.TensorFlowEncoder import TensorFlowEncoder
+from transformer_architecture.decodes.TensorflowDecoder import TensorflowDecoder
+from transformer_architecture.encodes.TensorflowEncoder import TensorflowEncoder
 from transformer_architecture.utils.tests.function_test import create_padding_mask, create_look_ahead_mask
 
 
-class TensorFlowTransformer(model):
+class TensorflowTransformer(model):
     def __init__(self,
                  vocab_size_enc,
                  vocab_size_dec,
                  d_model,
                  nb_layers,
-                 FFN_units,
+                 ffn_units,
                  nb_proj,
                  dropout_rate,
                  name="transformer"):
-        super(TensorFlowTransformer, self).__init__(name=name)
-        self.encoder = TensorFlowEncoder(nb_layers, FFN_units, nb_proj, dropout_rate, vocab_size_enc, d_model)
-        self.decoder = TensorFlowDecoder(nb_layers, FFN_units, nb_proj, dropout_rate, vocab_size_dec, d_model)
+        super(TensorflowTransformer, self).__init__(name=name)
+        self.encoder = TensorflowEncoder(nb_layers, ffn_units, nb_proj, dropout_rate, vocab_size_enc, d_model)
+        self.decoder = TensorflowDecoder(nb_layers, ffn_units, nb_proj, dropout_rate, vocab_size_dec, d_model)
         self.last_linear = layers.Dense(units=vocab_size_dec, name='lin_output')
 
-    def create_padding_mask(self, seq): # (batch_size, seq_length) -> (batch_size, nb_proj, seq_lenght, d_proj)
+    def create_padding_mask(self, seq): # (batch_size, seq_length) -> (batch_size, nb_proj, seq_length, d_proj)
         mask = tf.cast(tf.math.equal(seq, 0), tf.float32)
         return mask[:, tf.newaxis, tf.newaxis, :]
 

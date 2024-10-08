@@ -3,7 +3,10 @@ from keras import layers as layers
 
 from transformer_architecture.attention.tensorflow_attention_mechanism import scaled_dot_product_attention
 
-
+'''
+    MULTI HEAD ATTENTION MECHANISM
+    nb_proj = number of projection
+'''
 class TensorflowMultiHeadAttention(layers.Layer):
 
     def __init__(self, nb_proj):

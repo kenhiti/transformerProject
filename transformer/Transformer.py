@@ -7,7 +7,7 @@ from keras import optimizers as optimizers
 from transformer_architecture.optimzers.TensorflowCustomSchedule import TensorflowCustomSchedule
 from transformer_architecture.transformer.LossAndAccuracyCalculator import create_loss_object, \
     generate_train_loss_object, generate_train_accuracy_object
-from transformer_architecture.transformer.TensorFlowTransformer import TensorFlowTransformer
+from transformer_architecture.transformer.TensorflowTransformer import TensorflowTransformer
 
 
 class Transformer:
@@ -27,11 +27,11 @@ class Transformer:
     @classmethod
     def training_model(cls, inputs, outputs, dataset):
         backend.clear_session()
-        transformer = TensorFlowTransformer(vocab_size_enc=inputs,
+        transformer = TensorflowTransformer(vocab_size_enc=inputs,
                                             vocab_size_dec=outputs,
                                             d_model=Transformer.d_model,
                                             nb_layers=Transformer.nb_layers,
-                                            FFN_units=Transformer.ffn_units,
+                                            ffn_units=Transformer.ffn_units,
                                             nb_proj=Transformer.nb_proj,
                                             dropout_rate=Transformer.dropout_rate)
         # Calculating loss and accuracy
@@ -67,8 +67,8 @@ class Transformer:
                 dec_outputs_real = targets[:, :1]
 
                 with tf.GradientTape() as tape:
-                    predictions = transformer(dec_inputs_shifted_right, dec_outputs_real, training=True)
-                    loss = loss_object(dec_outputs_real, dec_outputs_real)
+                    predictions = transformer(input_en_data_tokenized, dec_inputs_shifted_right, training=True)
+                    loss = loss_object(dec_outputs_real, predictions)
 
                 gradients = tape.gradient(loss, transformer.trainable_variables)
                 optimizer.apply_gradients(zip(gradients, transformer.trainable_variables))
@@ -79,9 +79,10 @@ class Transformer:
                     print('Epoch {} Batch {} Loss {:.4f} Accuracy {:.4f}'.format(epoch + 1, batch, train_loss.result(),
                                                                                  train_accuracy.result()))
 
-                checkpoint_save_path = checkpoint_manager.save()
-                print('Saving checkpoint for epoch {} at {}'.format(epoch + 1, checkpoint_save_path))
-                print('Time taken for 1 epoch {} secs\n'.format(time.time() - start))
+            checkpoint_save_path = checkpoint_manager.save()
+            print('Saving checkpoint for epoch {} at {}'.format(epoch + 1, checkpoint_save_path))
+            print('Time taken for 1 epoch {} secs\n'.format(time.time() - start))
+
 
 
 

@@ -13,5 +13,3 @@ Below are some useful references:
 * [FastAPI](https://fastapi.tiangolo.com/)
 * [Uvicorn](https://www.uvicorn.org/) 
 * [Tensorflow](https://www.tensorflow.org/)
-
-

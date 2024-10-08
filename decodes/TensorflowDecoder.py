@@ -5,7 +5,7 @@ from transformer_architecture.decodes.TensorflowDecoderLayer import TensorflowDe
 from transformer_architecture.encodes.TensorflowPositionalEncoding import TensorflowPositionalEncoding
 
 
-class TensorFlowDecoder(layers.Layer):
+class TensorflowDecoder(layers.Layer):
 
     def __init__(self,
                  nb_layers,
@@ -15,17 +15,13 @@ class TensorFlowDecoder(layers.Layer):
                  vocab_size,
                  d_model,
                  name="decoder"):
-        super(TensorFlowDecoder, self).__init__(name=name)
-
+        super(TensorflowDecoder, self).__init__(name=name)
         self.d_model = d_model
         self.nb_layers = nb_layers
-
         self.embedding = layers.Embedding(vocab_size, d_model)
         self.pos_encoding = TensorflowPositionalEncoding()
         self.dropout = layers.Dropout(dropout_rate)
-
-        self.dec_layers = [TensorflowDecoderLayer(FFN_units,nb_proj, dropout_rate) for i in range(nb_layers)]
-
+        self.dec_layers = [TensorflowDecoderLayer(FFN_units,nb_proj, dropout_rate) for _ in range(nb_layers)]
 
     def call(self, inputs, enc_outputs, mask1, mask2, training):
         outputs = self.embedding(inputs)
